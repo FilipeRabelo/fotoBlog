@@ -1,0 +1,392 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  /* suavização de fonte */
+  -webkit-font-smoothing: antialiased;
+  /* PARA MOTORES WEBKIT  */
+  -moz-osx-font-smoothing: grayscale;
+  /* PARA MOTORES FIREFOX */
+}
+
+:root {
+  font-size: 62.5%;
+
+  --color-base-white: #ffffff;
+  --color-base-gray-100: #f5f5f5;
+  --color-base-gray-300: #8d8d99;
+  --color-base-gray-500: #3d3d3d;
+  --color-base-gray-900: #202024;
+
+}
+
+/* :root {
+  font-size: 62.5%;
+
+  --hue: 100;
+  --color-base-white: hsl(0, 0%, 100%);
+  --color-base-gray-100: hsl(0, 0%, 96%);
+  --color-base-gray-300: hsl(var(--hue), 60%, 58%);
+  --color-base-gray-500: hsl(0, 0%, 24%);
+  --color-base-gray-900: hsl(var(--hue), 60%, 20%);
+} */
+
+html, body, input {
+  font-family: 'Mulish', sans-serif;
+}
+
+body {
+  font-size: 1.6rem;
+  background-color: var(--color-base-white);
+  color: var(--color-base-gray-900);
+  /*grid-template-columns: minmax(250px, 1fr);*/
+}
+
+#app {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: max-content 1fr max-content;
+  grid-template-columns: minmax(250px, 1fr);
+}
+
+.container {
+  grid-template-columns: minmax(250px, 1fr);
+  padding: 1.6rem 3.2rem;
+  width: min(112rem, 100%);
+  margin: 0 auto;
+}
+
+.logo {
+  filter: saturate(200%) brightness(2) hue-rotate(4deg);
+
+  &:hover {
+    color: blueviolet;
+  }
+}
+
+header,
+nav,
+nav ul {
+  display: flex;
+  align-items: center;
+  gap: 7.2rem;
+  font-weight: 700;
+
+}
+
+header form {
+  flex: 1;
+  /* PARA PREENCHER TODO o ESPAÇO  */
+}
+
+nav ul {
+  list-style: none;
+  font-size: 1.8rem;
+  color: var(--color-base-gray-300);
+
+}
+
+ul li.active {
+  color: #000;
+  transition: all 0.5s;
+
+  &:hover {
+    color: #8A2BE2;
+    cursor: pointer;
+    transform: scale(1.1);
+    font-weight: bold;
+  }
+}
+
+.noActive {
+  transition: all 0.5s;
+
+  a {
+    text-decoration: none;
+    transition: all 0.5s;
+
+    &:hover {
+      color: #8A2BE2;
+      cursor: pointer;
+      transform: scale(1.1);
+      font-weight: bold;
+    }
+  }
+
+  &:hover {
+
+    transform: scale(1.1);
+    font-weight: bold;
+  }
+}
+
+
+.input-wrapper label {
+  /* PARA ESCONDER O LABEL */
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 1.6rem;
+
+  background-color: var(--color-base-gray-100);
+  border: none;
+  border-radius: 1.6rem;
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+
+.input-wrapper input::placeholder {
+  opacity: 0.56;
+  color: var(--color-base-gray-500);
+}
+
+.avatar {
+  width: 4.2rem;
+  height: 4.2rem;
+
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+
+/* FIM HEADER */
+
+/* GALERIA */
+
+main {
+  background-color: var(--color-base-gray-100);
+
+  overflow-y: scroll;
+  /* PARA ROLAGEM SOMENTE NO MAIN */
+}
+
+main h1 {
+  padding-top: 1.6rem;
+  font-size: 2.4rem;
+}
+
+.gallery {
+  margin-top: 3.2rem;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.2rem;
+}
+
+.item {
+  background-color: var(--color-base-white);
+  border-radius: .8rem;
+  overflow: hidden;
+
+}
+
+.item img {
+
+  width: 100%;
+  aspect-ratio: 16/9;
+  /* USANDO A PROPORÇÃO ESTICANOD A IMAGEM */
+  object-fit: cover;
+  /* FAZENDO ELA COBIRI TODO A O ESPAÇO */
+  transition: all 1.1s ease-in-out;
+  display: block;
+
+  /*filter: grayscale(1);  DEIXA A IMG PRETA E BRANCA */
+  /*transition-timing-function: ease-in-out;*/
+  /*transition-delay: 0.3s;*/
+}
+
+.item img:hover {
+  filter: hue-rotate(7deg) contrast(101%) saturate(200%);
+  transform: scale(1.3) rotate(-5deg);
+}
+
+figure {
+  animation: pulsar 0.5s infinite;
+  transition: all 1.5s;
+
+  &:hover {
+    box-shadow: 0 0 15px #8A2BE2;
+  }
+}
+
+@keyframes pulsar {
+  0% {
+    box-shadow: 0 0 5px #8A2BE2, 0 0 10px #8A2BE2, 0 0 15px #8A2BE2;
+  }
+
+  50% {
+    box-shadow: 0 0 40px #8A2BE2, 0 0 50px #8A2BE2, 0 0 60px #8A2BE2;
+  }
+
+  100% {
+    box-shadow: 0 0 5px #8A2BE2, 0 0 10px #8A2BE2, 0 0 15px #8A2BE2;
+  }
+}
+
+.details {
+  padding: 2.2rem;
+  background-color: var(--color-base-white);
+  z-index: 1;
+  position: relative;
+}
+
+.details h2 {
+  font-size: 1.8rem;
+}
+
+.tags {
+  margin-top: 1.2rem;
+}
+
+.tags span {
+  padding: .6rem;
+  background-color: var(--color-base-gray-100);
+  border-radius: .4rem;
+  line-height: 0;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* FIM GALERIA */
+
+footer p {
+  text-align: center;
+  padding: 0.5rem;
+  font-weight: 600;
+  background-color: transparent;
+}
+
+/* ANIMAÇÔES */
+
+header {
+  --starty: -100%;
+  animation: move 1s;
+}
+
+footer {
+  --starty: 100%;
+  animation: move 1s;
+}
+
+main {
+  animation: movex 1s;
+}
+
+.item {
+  --delay: .4s;
+  animation: aparecer .4s var(--delay) backwards;
+}
+
+@keyframes move {
+
+  /* move - movimentar */
+  from {
+    transform: translateY(var(--starty));
+  }
+}
+
+@keyframes aparecer {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes movex {
+  from {
+    transform: translateX(-100%);
+  }
+}
+
+/*----------------------------*/
+
+@media (min-width: 768px) {
+  nav ul {
+    flex-direction: row;
+    /* Revert to row for larger screens */
+  }
+}
+
+/* Add media query for mobile styles */
+@media (max-width: 600px) {
+
+  header,
+  nav,
+  nav ul {
+    gap: 1rem;
+    /* Adjust gap for smaller screens */
+  }
+
+  .details {
+    padding-left: .2rem;
+    padding-bottom: 0;
+    padding-top: .5rem;
+  }
+
+  .details h2 {
+    font-size: 1.0rem;
+    /* Adjust gap for smaller screens */
+
+    /*color: orangered;*/
+  }
+
+  .tags {
+    padding-bottom: .5rem;
+  }
+
+  .tags span {
+    font-size: 0.7rem;
+  }
+
+  .container h1 {
+    font-size: 2rem;
+  }
+
+  footer {
+    background-attachment: fixed
+  }
+
+}
+
+/* Add media query for mobile styles */
+
+/* barra de rolagem */
+
+/* Para navegadores WebKit (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 24px;
+  /* Largura da barra de rolagem */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  /* Cor do fundo da barra */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #8A2BE2;
+  /* Cor da barra de rolagem */
+  border-radius: 8px;
+  /* Deixa a barra arredondada */
+  border: 2px solid #f1f1f1;
+  /* Adiciona uma borda */
+}
+
+
+/* Para Firefox */
+/* body {
+  scrollbar-color: #8A2BE2 #f1f1f1;
+ 
+  scrollbar-width: thin;
+} */
